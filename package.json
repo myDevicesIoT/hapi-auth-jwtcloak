@@ -1,0 +1,15 @@
+{
+  "name": "hapi-auth-jwtcloak",
+  "version": "1.0.0",
+  "description": "Regular JWT verification library with Keycloak support",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "get-keycloak-public-key": "^1.0.2",
+    "hapi-auth-jwt2": "^7.1.3",
+    "jsonwebtoken": "^8.2.1",
+    "lodash": "^4.17.5"
+  }
+}
