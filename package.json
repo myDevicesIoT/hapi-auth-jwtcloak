@@ -1,6 +1,6 @@
 {
   "name": "hapi-auth-jwtcloak",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Regular JWT verification library with Keycloak support",
   "main": "index.js",
   "scripts": {},

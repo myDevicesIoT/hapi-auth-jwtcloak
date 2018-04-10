@@ -23,5 +23,5 @@ exports.register = (server, options, next) => {
   
 exports.register.attributes = {
     name: 'hapi-auth-jwtcloak',
-    version: '1.0.0'
+    version: '1.0.3'
 };
