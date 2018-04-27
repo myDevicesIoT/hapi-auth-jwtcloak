@@ -5,16 +5,27 @@ A Hapi plugin to authenticate multiple JWT issuers. Currently support JWT 1 & 2 
 The Keycloak JWT validation defaults to local JWT signing using public key from Keycloak. Validation
 using the introspect endpoint is also supported.
 
-**Install**
+<h1>Install</h1>
+
 ```
 npm install hapi-auth-jwtcloak
+-or-
+npm install git+https://github.com/myDevicesIoT/hapi-auth-jwtcloak
 ```
 
-**Configuration**
+<h1>Configuration</h1>
+
+Parameter Name | Description
+--- | ---
+`setAsDefaultAuth` | `Boolean` if true, sets `jwt` as the default Hapi authentication strategy when the authentication strategy is not defined for a Hapi route config.
+
+<h2>Example:</h2>
+
 ```
 {
     register: require('hapi-auth-jwtcloak'),
     options: {
+      setAsDefaultAuth: false,
       issuers: [{
         issuer: 'KEYCLOAK ISSUER',
         provider: 'keycloak',

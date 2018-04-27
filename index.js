@@ -15,7 +15,9 @@ exports.register = (server, options, next) => {
             verifyFunc: verifyFunc.bind(jwtController)
         });
   
-        server.auth.default('jwt');
+        if (options.setAsDefaultAuth) {
+          server.auth.default('jwt');
+        }
         return next();
     });
     
