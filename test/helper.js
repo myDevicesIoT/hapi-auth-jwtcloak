@@ -61,6 +61,7 @@ function start() {
           issuer: process.env.KEYCLOAK_ISS,
           baseUrl: process.env.KEYCLOAK_BASE_URL,
           realm: process.env.KEYCLOAK_REALM,
+          defaultScopes: ['client'],
           introspect: false
         });
 
@@ -68,6 +69,7 @@ function start() {
           issuer: process.env.KEYCLOAK_ISS,
           baseUrl: process.env.KEYCLOAK_BASE_URL,
           realm: process.env.KEYCLOAK_REALM,
+          defaultScopes: ['client'],
           introspect: true,
           clientId: process.env.KEYCLOAK_CLIENT_ID,
           clientSecret: process.env.KEYCLOAK_CLIENT_SECRET
@@ -105,6 +107,20 @@ function start() {
           config: {
             auth: {
               strategies: ['keycloak-jwt-introspect', 'basic']
+            }
+          },
+          handler: (request, reply) => reply(request.auth.credentials)
+        });
+
+        finalServer.route({
+          method: 'GET',
+          path: '/scoped',
+          config: {
+            auth: {
+              strategies: ['keycloak-jwt-introspect'],
+              access: {
+                scope: ['client']
+              }
             }
           },
           handler: (request, reply) => reply(request.auth.credentials)

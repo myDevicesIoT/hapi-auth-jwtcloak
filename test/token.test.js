@@ -160,4 +160,26 @@ suite('token validation', () => {
         expect(response.statusCode).to.equal(401);
       });
   });
+
+  test('Should be able to access a route that has scoped config', () => {
+    const url = `${process.env.KEYCLOAK_ISS}/protocol/openid-connect/token`;
+    const headers = {
+      'content-type': 'application/x-www-form-urlencoded'
+    };
+    const body = {
+      client_id: process.env.KEYCLOAK_APP_ID,
+      client_secret: process.env.KEYCLOAK_APP_SECRET,
+      grant_type: 'client_credentials'
+    };
+    return request('POST', url)
+      .set(headers)
+      .send(body)
+      .then((response) => {
+        const token = `Bearer ${response.body.access_token}`;
+        return Helper.serverInject('GET', '/scoped', token);
+      })
+      .then((response) => {
+        expect(response.statusCode).to.equal(200);
+      });
+  });
 });

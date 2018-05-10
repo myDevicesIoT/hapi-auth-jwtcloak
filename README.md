@@ -21,6 +21,7 @@ Field Name | Type | Description
 `issuer` | `string` | **Required** The Keycloak token issuer
 `baseurl` | `string` | **Required** The base URL of the Keycloak server
 `realm` | `string` | **Required** the Keycloak realm to authenticate against
+`defaultScopes` | `string[]` | Default scopes to add to decoded credentials
 `introspect` | `boolean` | Defaults to `false`. Introspect the Keycloak JWT token (online token verification)
 `cientId` | `string` | Required if `introspect` is true. This client id should have access to perform token introspect
 `clientSecret` | `string` | Required if `introspect` is true. The secret for the client that has access to perform token introspect.
