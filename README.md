@@ -18,6 +18,8 @@ npm install git+https://github.com/myDevicesIoT/hapi-auth-jwtcloak
 Parameter Name | Description
 --- | ---
 `setAsDefaultAuth` | `Boolean` if true, sets `jwt` as the default Hapi authentication strategy when the authentication strategy is not defined for a Hapi route config.
+`strategy` | `string` sets the hapi strategy name to use on route configs, defaults to `jwt`.
+`issuers[].defaultScopes` | `string[]` adds default scope(s) to the decoded credentials
 
 <h2>Example:</h2>
 

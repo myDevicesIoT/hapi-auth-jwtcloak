@@ -1,4 +1,5 @@
 const Controller = require('./lib/controller');
+const pkg = require('./package.json');
 
 exports.register = (server, options, next) => {
     const jwtController = new Controller(options);
@@ -7,9 +8,10 @@ exports.register = (server, options, next) => {
         if (err) {
             return next(err);
         }
+        const strategy = options.strategy ? options.strategy : 'jwt';
 
         //JWT validation setup
-        server.auth.strategy('jwt', 'jwt', {
+        server.auth.strategy(strategy, 'jwt', {
             //returns headers & signature
             complete: true, 
             verifyFunc: verifyFunc.bind(jwtController)
@@ -20,10 +22,6 @@ exports.register = (server, options, next) => {
         }
         return next();
     });
-    
 }
-  
-exports.register.attributes = {
-    name: 'hapi-auth-jwtcloak',
-    version: '1.0.3'
-};
+
+exports.register.attributes = { pkg };
