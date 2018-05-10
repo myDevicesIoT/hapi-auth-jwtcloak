@@ -35,3 +35,7 @@ node_modules
 # Vagrant VM (temporary files)
 .vagrant
 package-lock.json
+
+.env
+
+.vscode/
