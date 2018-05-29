@@ -9,6 +9,7 @@
   "dependencies": {
     "hapi-auth-jwt2": "^7.1.3",
     "jsonwebtoken": "^8.2.1",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "request": "^2.87.0"
   }
 }
